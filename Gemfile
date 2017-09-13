@@ -20,3 +20,4 @@ group :development do
 end
 
 gem 'rails_admin', '~> 1.2'
+gem 'cancancan'
