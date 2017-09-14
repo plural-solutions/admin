@@ -5,12 +5,16 @@ CREATE DATABASE menyoo;
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   user_id varchar(255) NOT NULL,
-  status varchar(20) NOT NULL
+  status varchar(20) NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp
 );
 
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY,
-  name varchar(100) NOT NULL
+  name varchar(100) NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp
 );
 
 CREATE TABLE products (
@@ -19,6 +23,8 @@ CREATE TABLE products (
   title varchar(255) NOT NULL,
   description text NOT NULL,
   image text NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
   CONSTRAINT fk_restaurant_on_products FOREIGN KEY ("restaurant_id") REFERENCES restaurants ("id")
 );
 
@@ -29,6 +35,8 @@ CREATE TABLE ingredients (
   group_name varchar(20) NOT NULL,
   price integer NOT NULL,
   basic boolean,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
   CONSTRAINT fk_product_on_ingredients FOREIGN KEY ("product_id") REFERENCES products ("id")
 );
 
@@ -38,6 +46,8 @@ CREATE TABLE products_orders (
   order_id integer NOT NULL,
   quantity integer NOT NULL,
   total_price integer NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
   CONSTRAINT fk_product_on_product_orders FOREIGN KEY ("product_id") REFERENCES products ("id"),
   CONSTRAINT fk_order_on_product_orders FOREIGN KEY ("order_id") REFERENCES orders ("id")
 );
@@ -45,6 +55,8 @@ CREATE TABLE products_orders (
 CREATE TABLE ingredients_orders (
   product_order_id integer NOT NULL,
   ingredient_id integer NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
   CONSTRAINT fk_product_on_ingredients_orders FOREIGN KEY ("product_order_id") REFERENCES products_orders ("id"),
   CONSTRAINT fk_ingredient_on_ingredients_orders FOREIGN KEY ("ingredient_id") REFERENCES ingredients ("id")
 );
@@ -54,6 +66,8 @@ CREATE TABLE evaluations (
   user_id varchar(255) NOT NULL,
   product_id integer NOT NULL,
   score integer NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
   CONSTRAINT fk_product_on_evaluations FOREIGN KEY ("product_id") REFERENCES products ("id")
 );
 
