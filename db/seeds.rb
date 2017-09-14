@@ -5,8 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Inserting Restaurants.."
+restaurante = Restaurant.find_or_create_by!(name: 'Bar do zé')
+
 puts "Inserting AdminUsers.."
-User.create!(
+restaurante.users.create!(
   email: 'admin@menyoo.com.br',
   password: '123456',
   role: 'admin'
