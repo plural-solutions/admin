@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  self.table_name = :admins
+
   def admin?
-    true
+    role == 'admin'
   end
 
   def chef_cookie?
-    false
+    role == 'chef'
   end
 end
