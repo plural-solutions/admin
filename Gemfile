@@ -17,9 +17,11 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.0.4'
 end
 
 gem 'rails_admin', '~> 1.2'
 gem 'cancancan'
 gem 'devise'
 gem 'devise-i18n'
+gem 'money-rails', '~>1'
