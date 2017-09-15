@@ -39,5 +39,38 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.authorize_with :cancan
+  config.model Product do
+    edit do
+      field :title
+      field :description
+      field :image
+      field :price
+      field :restaurant_id, :hidden do
+        default_value do
+          bindings[:view]._current_user.restaurant_id
+        end
+      end
+    end
+
+    list do
+      field :title
+      field :description
+      field :image
+      field :price do
+        formatted_value do
+          humanized_money_with_symbol value
+        end
+      end
+    end
+
+    export do
+      field :title
+      field :description
+      field :price do
+        formatted_value do
+          humanized_money_with_symbol value
+        end
+      end
+    end
+  end
 end

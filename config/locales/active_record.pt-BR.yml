@@ -1,9 +1,16 @@
 pt-BR:
   activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            price:
+              not_a_number: não é um número
     attributes:
       product:
         title: Título do Produto
         description: Descrição do produto
         image: URL da imagem
+        price: Preço do produto
     models:
       product: Produto
