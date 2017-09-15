@@ -93,6 +93,7 @@ pt-BR:
         menu: "Histórico"
         breadcrumb: "Histórico"
     form:
+      new_model: "Novo"
       cancel: "Cancelar"
       basic_info: "Informação Básica"
       required: "Obrigatórios"

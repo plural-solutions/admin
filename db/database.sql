@@ -74,10 +74,10 @@ CREATE TABLE evaluations (
 
 /* CREATE INDEX */
 
-CREATE UNIQUE INDEX idx_restaurant_on_products ON products USING btree (restaurant_id);
-CREATE UNIQUE INDEX idx_product_on_ingredients ON ingredients USING btree (product_id);
-CREATE UNIQUE INDEX idx_product_on_products_orders ON products_orders USING btree (product_id);
-CREATE UNIQUE INDEX idx_order_on_products_orders ON products_orders USING btree (order_id);
-CREATE UNIQUE INDEX idx_product_order_on_ingredients_orders ON ingredients_orders USING btree (product_order_id);
-CREATE UNIQUE INDEX idx_ingredient_on_ingredients_orders ON ingredients_orders USING btree (ingredient_id);
-CREATE UNIQUE INDEX idx_product_on_evaluations ON evaluations USING btree (product_id);
+CREATE INDEX idx_restaurant_on_products ON products USING btree (restaurant_id);
+CREATE INDEX idx_product_on_ingredients ON ingredients USING btree (product_id);
+CREATE INDEX idx_product_on_products_orders ON products_orders USING btree (product_id);
+CREATE INDEX idx_order_on_products_orders ON products_orders USING btree (order_id);
+CREATE INDEX idx_product_order_on_ingredients_orders ON ingredients_orders USING btree (product_order_id);
+CREATE INDEX idx_ingredient_on_ingredients_orders ON ingredients_orders USING btree (ingredient_id);
+CREATE INDEX idx_product_on_evaluations ON evaluations USING btree (product_id);

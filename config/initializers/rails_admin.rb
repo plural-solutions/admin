@@ -45,6 +45,7 @@ RailsAdmin.config do |config|
       field :description
       field :image
       field :price
+      field :ingredients
       field :restaurant_id, :hidden do
         default_value do
           bindings[:view]._current_user.restaurant_id
@@ -53,6 +54,17 @@ RailsAdmin.config do |config|
     end
 
     list do
+      field :title
+      field :description
+      field :image
+      field :price do
+        formatted_value do
+          humanized_money_with_symbol value
+        end
+      end
+    end
+
+    show do
       field :title
       field :description
       field :image

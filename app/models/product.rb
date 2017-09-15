@@ -2,10 +2,6 @@ class Product < ApplicationRecord
   validates :title, :description, :image, :price, presence: true
   monetize :price_cents
 
-  rails_admin do
-    show do
-      field :title
-      field :description
-    end
-  end
+  has_many :ingredients, :inverse_of => :product, dependent: :destroy
+  accepts_nested_attributes_for :ingredients, :allow_destroy => true
 end
