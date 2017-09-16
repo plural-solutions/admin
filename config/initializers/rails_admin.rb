@@ -44,8 +44,10 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :image
-      field :price
-      field :ingredients
+      field :price_cents do
+        help 'Coloque o preço em centavos, por exemplo: 1000 significa R$ 10,00'
+      end
+      field :ingredient_groups
       field :restaurant_id, :hidden do
         default_value do
           bindings[:view]._current_user.restaurant_id

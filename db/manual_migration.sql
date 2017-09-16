@@ -20,23 +20,31 @@ CREATE TABLE products (
   restaurant_id integer NOT NULL,
   title varchar(255) NOT NULL,
   description text NOT NULL,
-  image text NOT NULL,
+  image varchar(255) NOT NULL,
   price_cents integer NOT NULL,
   inserted_at timestamp DEFAULT now(),
   updated_at timestamp,
   CONSTRAINT fk_restaurant_on_products FOREIGN KEY ("restaurant_id") REFERENCES restaurants ("id")
 );
 
-CREATE TABLE ingredients (
+CREATE TABLE ingredient_groups (
   id SERIAL PRIMARY KEY,
-  product_id integer NOT NULL,
-  name varchar(255) NOT NULL,
-  group_name varchar(20) NOT NULL,
-  price_cents integer NOT NULL,
+  group_name varchar(255) NOT NULL,
   basic boolean,
+  product_id integer NOT NULL,
   inserted_at timestamp DEFAULT now(),
   updated_at timestamp,
-  CONSTRAINT fk_product_on_ingredients FOREIGN KEY ("product_id") REFERENCES products ("id")
+  CONSTRAINT fk_product_on_ingredient_groups FOREIGN KEY ("product_id") REFERENCES products ("id")
+);
+
+CREATE TABLE ingredients (
+  id SERIAL PRIMARY KEY,
+  ingredient_group_id integer NOT NULL,
+  name varchar(255) NOT NULL,
+  price_cents integer,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
+  CONSTRAINT fk_ingredient_group_on_ingredients FOREIGN KEY ("ingredient_group_id") REFERENCES ingredient_groups ("id")
 );
 
 CREATE TABLE products_orders (
@@ -73,7 +81,8 @@ CREATE TABLE evaluations (
 /* CREATE INDEX */
 
 CREATE INDEX idx_restaurant_on_products ON products USING btree (restaurant_id);
-CREATE INDEX idx_product_on_ingredients ON ingredients USING btree (product_id);
+CREATE INDEX idx_product_on_ingredients ON ingredient_groups USING btree (product_id);
+CREATE INDEX idx_ingredient_group_on_ingredients ON ingredients USING btree (ingredient_group_id);
 CREATE INDEX idx_product_on_products_orders ON products_orders USING btree (product_id);
 CREATE INDEX idx_order_on_products_orders ON products_orders USING btree (order_id);
 CREATE INDEX idx_product_order_on_ingredients_orders ON ingredients_orders USING btree (product_order_id);

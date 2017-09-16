@@ -1,15 +1,28 @@
 class Ingredient < ApplicationRecord
-  validates :name, :group_name, :price, presence: true
-  monetize :price_cents
+  validates :name, presence: true
+  validate :price_if_not_default
 
-  belongs_to :product, :inverse_of => :ingredients
+  monetize :price_cents, allow_nil: true
+
+  belongs_to :ingredient_group, :inverse_of => :ingredients
 
   rails_admin do
     edit do
       field :name
-      field :group_name
-      field :price
-      field :basic
+      field :price_cents do
+        help 'Coloque o preço em centavos, por exemplo: 1000 significa R$ 10,00'
+      end
+    end
+  end
+
+  private
+  def price_if_not_default
+    if ingredient_group.basic? && price
+      errors.add(:price, 'não defina um preço para um ingrediente padrão')
+    end
+
+    if !ingredient_group.basic? && price.nil?
+      errors.add(:price, 'defina um preço para um ingrediente padrão')
     end
   end
 end

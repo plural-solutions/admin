@@ -6,19 +6,28 @@ pt-BR:
           attributes:
             price:
               not_a_number: não é um número
+        ingredient_group:
+          attributes:
+            ingredients:
+              blank: adicione pelo menos 1 ingrediente no grupo de ingrediente
     attributes:
       product:
         title: Título do Produto
         description: Descrição do produto
         image: URL da imagem
-        price: Preço do produto
-        ingredients: Ingredientes
+        price_cents: Preço do produto
+        ingredients_group: Grupo de Ingrediente
       ingredient:
         name: Nome do ingrediente
         description: Descrição do ingrediente
         group_name: Grupo de ingredients
-        price: Preço do ingrediente
+        price_cents: Preço do ingrediente
         basic: Padrão
+      ingredient_group:
+        group_name: Nome do group
+        basic: Grupo padrão
+        ingredients: Ingredientes
     models:
       product: Produto
       ingredient: Ingrediente
+      ingredient_group: Grupo de Ingrediente
