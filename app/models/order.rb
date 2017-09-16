@@ -18,7 +18,11 @@ class Order < ApplicationRecord
     end
 
     list do
-      field :status
+      field :status do
+        pretty_value do
+          I18n.t("admin.actions.order.show.status.#{value}")
+        end
+      end
       field :inserted_at
     end
   end

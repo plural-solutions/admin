@@ -3,6 +3,7 @@ module TrackingOrder
 
     class << self
       include ActionView::Helpers::FormHelper
+
       def build(type_collection = [])
         type_collection.map do |type|
           html = [radio_button_tag(:status, type.to_sym)]
