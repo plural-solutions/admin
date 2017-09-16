@@ -6,6 +6,7 @@ namespace :app do
     Rake::Task['db:migrate'].invoke
     sql = File.open("#{Rails.root}/db/manual_migration.sql")
     ActiveRecord::Base.connection.execute(sql.read)
+    Rake::Task['db:seed'].invoke
   end
 
 end
