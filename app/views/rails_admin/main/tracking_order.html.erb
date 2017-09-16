@@ -1,0 +1,13 @@
+<p>
+  <% if @object.sent? %>
+    <h4>Este pedido já foi enviado para o cliente</h4>
+  <% elsif @object.rejected? %>
+    <h4>Este pedido foi rejeitado</h4>
+  <% else %>
+    <h4>Qual atualização deseja fazer para este pedido?</h4>
+    <%= form_for @object, url: tracking_order_path(@abstract_model, @object.id), method: :post do %>
+      <%= radio_button_status(@object.status).html_safe %>
+      <%= submit_tag("Atualizar situação")%>
+    <% end %>
+  <% end %>
+</p>

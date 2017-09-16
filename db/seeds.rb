@@ -15,3 +15,9 @@ restaurante.users.create!(
   password: '123456',
   role: 'admin'
 )
+
+restaurante.users.create!(
+  email: 'chef@menyoo.com.br',
+  password: '123456',
+  role: 'chef'
+)

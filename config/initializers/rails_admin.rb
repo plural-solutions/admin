@@ -23,16 +23,36 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
+  config.parent_controller = '::ApplicationController'
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
     new
     export
     bulk_delete
-    show
+    show do
+      except [Order]
+    end
     edit
     delete
     show_in_app
+
+    member :tracking_order do
+      i18n_key :tracking_order
+      authorization_key :tracking_order
+      only [Order]
+      http_methods { [:post, :get] }
+      controller do
+        proc do
+          if request.post?
+            @object.status = params[:status]
+            @object.save!
+            redirect_to index_path(model_name: 'order')
+          end
+        end
+      end
+    end
 
     ## With an audit adapter, you can add:
     # history_index

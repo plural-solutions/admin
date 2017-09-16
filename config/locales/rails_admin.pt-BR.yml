@@ -1,0 +1,14 @@
+pt-BR:
+  admin:
+    actions:
+      tracking_order:
+        title: Acompanhamento do pedido
+        menu: Acompanhamento do pedido
+        breadcrumb: Acompanhamento do pedido
+        link: Acompanhamento do pedido
+        status_type:
+          requested: Requisitado
+          accepted: Aceitar pedido
+          rejected: Rejeitar pedido
+          producing: Pedido em produção
+          sent: Pedido enviado

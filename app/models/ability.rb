@@ -8,6 +8,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, Product
+    elsif user.chef_cookie?
+      can :tracking_order, Order
+      can :read, Order
     end
   end
 end
