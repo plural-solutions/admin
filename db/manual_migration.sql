@@ -1,5 +1,3 @@
-CREATE DATABASE menyoo;
-
 /* CREATE TABLES*/
 
 CREATE TABLE orders (
