@@ -6,4 +6,20 @@ class Order < ApplicationRecord
     producing: 'producing',
     sent: 'sent',
   }
+
+  rails_admin do
+    show do
+      field :status do
+        pretty_value do
+          I18n.t("admin.actions.order.show.status.#{value}")
+        end
+      end
+      field :inserted_at
+    end
+
+    list do
+      field :status
+      field :inserted_at
+    end
+  end
 end

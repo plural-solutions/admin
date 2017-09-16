@@ -27,7 +27,11 @@ pt-BR:
         group_name: Nome do group
         basic: Grupo padrão
         ingredients: Ingredientes
+      order:
+        status: Situação
+        inserted_at: Dia/Hora da criação do pedido
     models:
       product: Produto
       ingredient: Ingrediente
       ingredient_group: Grupo de Ingrediente
+      order: Pedido
