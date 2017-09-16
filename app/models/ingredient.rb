@@ -18,11 +18,11 @@ class Ingredient < ApplicationRecord
   private
   def price_if_not_default
     if ingredient_group.basic? && price
-      errors.add(:price, 'não defina um preço para um ingrediente padrão')
+      errors.add(:price_cents, 'não defina um preço para um ingrediente padrão')
     end
 
     if !ingredient_group.basic? && price.nil?
-      errors.add(:price, 'defina um preço para um ingrediente padrão')
+      errors.add(:price_cents, 'defina um preço para um ingrediente padrão')
     end
   end
 end

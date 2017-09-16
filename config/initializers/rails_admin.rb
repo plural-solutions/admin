@@ -59,7 +59,7 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :image
-      field :price do
+      field :price_cents do
         formatted_value do
           humanized_money_with_symbol value
         end
@@ -80,7 +80,7 @@ RailsAdmin.config do |config|
     export do
       field :title
       field :description
-      field :price do
+      field :price_cents do
         formatted_value do
           humanized_money_with_symbol value
         end
