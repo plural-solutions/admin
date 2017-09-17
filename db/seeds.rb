@@ -26,7 +26,7 @@ product = restaurant.products.create!(
 
 # Ingredient group
 ig = product.ingredient_groups.new(
-  group_name: 'group blablanha'
+  title: 'group blablanha'
 )
 
 # Ingredient

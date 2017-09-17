@@ -1,4 +1,5 @@
 class Ingredient < ApplicationRecord
+  acts_as_paranoid
   validates :name, presence: true
   validate :price_if_not_default
 

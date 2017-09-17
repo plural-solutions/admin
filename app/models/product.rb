@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_paranoid
   validates :title, :description, :image, :price, presence: true
   monetize :price_cents
 

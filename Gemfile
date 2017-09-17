@@ -25,3 +25,4 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise-i18n'
 gem 'money-rails', '~>1'
+gem "paranoia", "~> 2.2"

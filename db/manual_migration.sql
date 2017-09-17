@@ -29,7 +29,7 @@ CREATE TABLE products (
 
 CREATE TABLE ingredient_groups (
   id SERIAL PRIMARY KEY,
-  group_name varchar(255) NOT NULL,
+  title varchar(255) NOT NULL,
   basic boolean,
   product_id integer NOT NULL,
   inserted_at timestamp DEFAULT now(),

@@ -20,11 +20,9 @@ pt-BR:
       ingredient:
         name: Nome do ingrediente
         description: Descrição do ingrediente
-        group_name: Grupo de ingredients
         price_cents: Preço do ingrediente
-        basic: Padrão
       ingredient_group:
-        group_name: Nome do group
+        title: Nome do groupo
         basic: Grupo padrão
         ingredients: Ingredientes
       order:
