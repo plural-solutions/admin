@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  has_many :product_orders
   enum status: {
     requested: 'requested',
     accepted: 'accepted',
