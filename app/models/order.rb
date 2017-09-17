@@ -15,6 +15,11 @@ class Order < ApplicationRecord
           I18n.t("admin.actions.order.show.status.#{value}")
         end
       end
+      field :product_orders do
+        pretty_value do
+          bindings[:view].render partial: 'order_description', locals: { object: self }
+        end
+      end
       field :inserted_at
     end
 

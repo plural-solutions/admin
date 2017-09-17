@@ -29,6 +29,7 @@ pt-BR:
         ingredients: Ingredientes
       order:
         status: Situação
+        product_orders: Produtos no pedido
         inserted_at: Dia/Hora da criação do pedido
     models:
       product: Produto

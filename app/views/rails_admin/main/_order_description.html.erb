@@ -1,0 +1,12 @@
+<% object.value.each do |po| %>
+  <strong>Produto:</strong> <%= po.product.title %><br />
+  <strong>Quantidade:</strong> <%= po.quantity %><br />
+  <strong>Ingredientes selecionandos:</strong>
+  <ul>
+    <% po.ingredient_product_orders.each do |i| %>
+      <li>
+        <%= i.ingredient.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

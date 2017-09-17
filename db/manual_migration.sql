@@ -59,13 +59,13 @@ CREATE TABLE product_orders (
   CONSTRAINT fk_order_on_product_orders FOREIGN KEY ("order_id") REFERENCES orders ("id")
 );
 
-CREATE TABLE ingredient_orders (
+CREATE TABLE ingredient_product_orders (
   product_order_id integer NOT NULL,
   ingredient_id integer NOT NULL,
   inserted_at timestamp DEFAULT now(),
   updated_at timestamp,
-  CONSTRAINT fk_product_on_ingredient_orders FOREIGN KEY ("product_order_id") REFERENCES product_orders ("id"),
-  CONSTRAINT fk_ingredient_on_ingredient_orders FOREIGN KEY ("ingredient_id") REFERENCES ingredients ("id")
+  CONSTRAINT fk_product_on_ingredient_product_orders FOREIGN KEY ("product_order_id") REFERENCES product_orders ("id"),
+  CONSTRAINT fk_ingredient_on_ingredient_product_orders FOREIGN KEY ("ingredient_id") REFERENCES ingredients ("id")
 );
 
 CREATE TABLE evaluations (
@@ -85,6 +85,6 @@ CREATE INDEX idx_product_on_ingredients ON ingredient_groups USING btree (produc
 CREATE INDEX idx_ingredient_group_on_ingredients ON ingredients USING btree (ingredient_group_id);
 CREATE INDEX idx_product_on_product_orders ON product_orders USING btree (product_id);
 CREATE INDEX idx_order_on_product_orders ON product_orders USING btree (order_id);
-CREATE INDEX idx_product_order_on_ingredient_orders ON ingredient_orders USING btree (product_order_id);
-CREATE INDEX idx_ingredient_on_ingredient_orders ON ingredient_orders USING btree (ingredient_id);
+CREATE INDEX idx_product_order_on_ingredient_product_orders ON ingredient_product_orders USING btree (product_order_id);
+CREATE INDEX idx_ingredient_on_ingredient_product_orders ON ingredient_product_orders USING btree (ingredient_id);
 CREATE INDEX idx_product_on_evaluations ON evaluations USING btree (product_id);

@@ -44,19 +44,28 @@ order = Order.create!(
   status: 'requested',
 )
 
-# Product Orders
+# Creating Product Orders and Ingredients Product Order
 
+# 1 Product into Order
 po = order.product_orders.create!(
   quantity: 3,
   product: product,
   total_price_cents: 15000,
 )
-
-# Ingredient Orders
-
-po.ingredient_orders.create!(
+po.ingredient_product_orders.create!(
   [
     { ingredient: Ingredient.first },
     { ingredient: Ingredient.second }
   ]
+)
+
+# 2 Product into Order
+po = order.product_orders.create!(
+  quantity: 1,
+  product: product,
+  total_price_cents: 10000,
+)
+
+po.ingredient_product_orders.create!(
+  ingredient: Ingredient.first
 )
