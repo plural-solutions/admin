@@ -93,6 +93,11 @@ RailsAdmin.config do |config|
           humanized_money_with_symbol value
         end
       end
+      field :ingredient_groups do
+        pretty_value do
+          bindings[:view].render partial: 'ingredients_group', locals: { object: self }
+        end
+      end
     end
 
     export do

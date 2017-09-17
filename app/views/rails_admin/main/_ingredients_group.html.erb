@@ -1,0 +1,15 @@
+<% object.value.each do |gi| %>
+  <ul>
+    <li>
+      <%= gi.group_name %>
+      <ul>
+        <% gi.ingredients.each do |i| %>
+          <li>
+            <%= i.name %>
+            <%= " - Preço #{humanized_money_with_symbol(i.price)}" if i.price%>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+<% end %>
