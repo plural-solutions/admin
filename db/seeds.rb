@@ -39,7 +39,7 @@ ig.save!
 
 # Order
 
-order = Order.create!(
+order = restaurant.orders.create!(
   user_id: 'abc123',
   status: 'requested',
 )

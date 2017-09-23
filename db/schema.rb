@@ -75,9 +75,10 @@ ActiveRecord::Schema.define(version: 20170917063752) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "user_id",     limit: 255,                          null: false
-    t.string   "status",      limit: 20,                           null: false
-    t.datetime "inserted_at",             default: -> { "now()" }
+    t.string   "user_id",       limit: 255,                          null: false
+    t.integer  "restaurant_id",                                      null: false
+    t.string   "status",        limit: 20,                           null: false
+    t.datetime "inserted_at",               default: -> { "now()" }
     t.datetime "updated_at"
   end
 
@@ -116,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170917063752) do
   add_foreign_key "ingredient_product_orders", "ingredients", name: "fk_ingredient_on_ingredient_product_orders"
   add_foreign_key "ingredient_product_orders", "product_orders", name: "fk_product_on_ingredient_product_orders"
   add_foreign_key "ingredients", "ingredient_groups", name: "fk_ingredient_group_on_ingredients"
+  add_foreign_key "orders", "restaurants", name: "fk_restaurant_on_orders"
   add_foreign_key "product_orders", "orders", name: "fk_order_on_product_orders"
   add_foreign_key "product_orders", "products", name: "fk_product_on_product_orders"
   add_foreign_key "products", "restaurants", name: "fk_restaurant_on_products"

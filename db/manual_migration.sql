@@ -1,18 +1,20 @@
 /* CREATE TABLES*/
 
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  user_id varchar(255) NOT NULL,
-  status varchar(20) NOT NULL,
-  inserted_at timestamp DEFAULT now(),
-  updated_at timestamp
-);
-
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY,
   name varchar(100) NOT NULL,
   inserted_at timestamp DEFAULT now(),
   updated_at timestamp
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  user_id varchar(255) NOT NULL,
+  restaurant_id integer NOT NULL,
+  status varchar(20) NOT NULL,
+  inserted_at timestamp DEFAULT now(),
+  updated_at timestamp,
+  CONSTRAINT fk_restaurant_on_orders FOREIGN KEY ("restaurant_id") REFERENCES restaurants ("id")
 );
 
 CREATE TABLE products (
