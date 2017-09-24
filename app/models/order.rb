@@ -6,6 +6,7 @@ class Order < ApplicationRecord
     rejected: 'rejected',
     producing: 'producing',
     sent: 'sent',
+    paid: 'paid',
   }
 
   rails_admin do

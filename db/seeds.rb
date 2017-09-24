@@ -16,29 +16,44 @@ restaurant.users.create!(
   role: 'chef'
 )
 
-# Product
+# Products
+# 1
 product = restaurant.products.create!(
-  title: 'Product 1',
-  description: 'Anything',
+  title: 'Pizza',
+  description: 'Pizza boa',
   image: 'http://image.com',
-  price: 1200
+  price: 20
 )
-
-# Ingredient group
 ig = product.ingredient_groups.new(
-  title: 'group blablanha'
+  title: 'Queijo'
 )
-
-# Ingredient
 ig.ingredients.new([
-    { name: 'Ingredient 1', price: 1000 },
-    { name: 'Ingredient 2', price: 5000 }
+    { name: 'Gorgonzola', price: 1.4 },
+    { name: 'Muçarela', price: 0.5 }
+  ]
+)
+ig.save!
+
+# 2
+
+product = restaurant.products.create!(
+  title: 'Pizza Presunto',
+  description: 'Pizza de preseunto',
+  image: 'http://image.com',
+  price: 30
+)
+ig = product.ingredient_groups.new(
+  title: 'Queijo'
+)
+ig.ingredients.new([
+    { name: 'Ingrediente adicional', price: 5 },
   ]
 )
 ig.save!
 
 # Order
 
+product = restaurant.products.first
 order = restaurant.orders.create!(
   user_id: 'abc123',
   status: 'requested',
@@ -46,7 +61,7 @@ order = restaurant.orders.create!(
 
 # Creating Product Orders and Ingredients Product Order
 
-# 1 Product into Order
+# 1
 po = order.product_orders.create!(
   quantity: 3,
   product: product,
@@ -59,7 +74,7 @@ po.ingredient_product_orders.create!(
   ]
 )
 
-# 2 Product into Order
+# 2
 po = order.product_orders.create!(
   quantity: 1,
   product: product,
@@ -69,3 +84,25 @@ po = order.product_orders.create!(
 po.ingredient_product_orders.create!(
   ingredient: Ingredient.first
 )
+
+
+# Restaurant 2
+restaurant = Restaurant.find_or_create_by!(name: 'Outback')
+
+# Products
+# 1
+product = restaurant.products.create!(
+  title: 'Costela',
+  description: 'Delicious',
+  image: 'http://image.com',
+  price: 100
+)
+ig = product.ingredient_groups.new(
+  title: 'Molho'
+)
+ig.ingredients.new([
+    { name: 'Branco', price: 1.4 },
+    { name: 'Amarelo', price: 0.5 }
+  ]
+)
+ig.save!

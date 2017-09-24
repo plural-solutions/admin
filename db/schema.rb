@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917063752) do
+ActiveRecord::Schema.define(version: 20170924000115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20170917063752) do
     t.integer  "ingredient_id",                             null: false
     t.datetime "inserted_at",      default: -> { "now()" }
     t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_ingredient_product_orders_on_deleted_at", using: :btree
     t.index ["ingredient_id"], name: "idx_ingredient_on_ingredient_product_orders", using: :btree
     t.index ["product_order_id"], name: "idx_product_order_on_ingredient_product_orders", using: :btree
   end
@@ -80,6 +82,8 @@ ActiveRecord::Schema.define(version: 20170917063752) do
     t.string   "status",        limit: 20,                           null: false
     t.datetime "inserted_at",               default: -> { "now()" }
     t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
   end
 
   create_table "product_orders", force: :cascade do |t|
@@ -89,6 +93,8 @@ ActiveRecord::Schema.define(version: 20170917063752) do
     t.integer  "total_price_cents",                          null: false
     t.datetime "inserted_at",       default: -> { "now()" }
     t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_product_orders_on_deleted_at", using: :btree
     t.index ["order_id"], name: "idx_order_on_product_orders", using: :btree
     t.index ["product_id"], name: "idx_product_on_product_orders", using: :btree
   end
@@ -110,6 +116,8 @@ ActiveRecord::Schema.define(version: 20170917063752) do
     t.string   "name",        limit: 100,                          null: false
     t.datetime "inserted_at",             default: -> { "now()" }
     t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_restaurants_on_deleted_at", using: :btree
   end
 
   add_foreign_key "evaluations", "products", name: "fk_product_on_evaluations"
