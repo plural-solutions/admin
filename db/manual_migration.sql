@@ -73,11 +73,11 @@ CREATE TABLE ingredient_product_orders (
 CREATE TABLE evaluations (
   id SERIAL PRIMARY KEY,
   user_id varchar(255) NOT NULL,
-  product_id integer NOT NULL,
+  product_order_id integer NOT NULL,
   score integer NOT NULL,
   inserted_at timestamp DEFAULT now(),
   updated_at timestamp,
-  CONSTRAINT fk_product_on_evaluations FOREIGN KEY ("product_id") REFERENCES products ("id")
+  CONSTRAINT fk_product_order_on_evaluations FOREIGN KEY ("product_order_id") REFERENCES product_orders ("id")
 );
 
 /* CREATE INDEX */
@@ -89,4 +89,4 @@ CREATE INDEX idx_product_on_product_orders ON product_orders USING btree (produc
 CREATE INDEX idx_order_on_product_orders ON product_orders USING btree (order_id);
 CREATE INDEX idx_product_order_on_ingredient_product_orders ON ingredient_product_orders USING btree (product_order_id);
 CREATE INDEX idx_ingredient_on_ingredient_product_orders ON ingredient_product_orders USING btree (ingredient_id);
-CREATE INDEX idx_product_on_evaluations ON evaluations USING btree (product_id);
+CREATE INDEX idx_product_order_on_evaluations ON evaluations USING btree (product_order_id);

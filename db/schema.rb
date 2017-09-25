@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20170924000115) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.string   "user_id",     limit: 255,                          null: false
-    t.integer  "product_id",                                       null: false
-    t.integer  "score",                                            null: false
-    t.datetime "inserted_at",             default: -> { "now()" }
+    t.string   "user_id",          limit: 255,                          null: false
+    t.integer  "product_order_id",                                      null: false
+    t.integer  "score",                                                 null: false
+    t.datetime "inserted_at",                  default: -> { "now()" }
     t.datetime "updated_at"
-    t.index ["product_id"], name: "idx_product_on_evaluations", using: :btree
+    t.index ["product_order_id"], name: "idx_product_order_on_evaluations", using: :btree
   end
 
   create_table "ingredient_groups", force: :cascade do |t|
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20170924000115) do
     t.index ["deleted_at"], name: "index_restaurants_on_deleted_at", using: :btree
   end
 
-  add_foreign_key "evaluations", "products", name: "fk_product_on_evaluations"
+  add_foreign_key "evaluations", "product_orders", name: "fk_product_order_on_evaluations"
   add_foreign_key "ingredient_groups", "products", name: "fk_product_on_ingredient_groups"
   add_foreign_key "ingredient_product_orders", "ingredients", name: "fk_ingredient_on_ingredient_product_orders"
   add_foreign_key "ingredient_product_orders", "product_orders", name: "fk_product_on_ingredient_product_orders"
