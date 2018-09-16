@@ -16,8 +16,9 @@ pt-BR:
             sent: Pedido enviado
         show:
           status:
-            requested:  Usuário aguardando confirmação
+            requested: Usuário aguardando confirmação
             accepted: Pedido aceito
             rejected: Pedido rejeitado
             producing: Pedido em produção
             sent: Pedido enviado
+            paid: Pedido pago
